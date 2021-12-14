@@ -1,12 +1,10 @@
-## Docker RemoteSyslog2 
+## Docker RemoteSyslog2
 
 Docker RemoteSyslog2 leverages the deployment agility of Docker, the slickness of [Alpine Linux](https://github.com/gliderlabs/docker-alpine) and the conveniance of [remote_syslog2](https://github.com/papertrail/remote_syslog2/) to bootstrap remote logging capabilities for both Docker hosts and containers.    
 It automates the collection and sending of logs to central log collectors or cloud-based log management services by tailing log files and emitting syslog messages over UDP, TCP or TCP/TLS.
 
+Forked from https://github.com/janeczku/Docker-RemoteSyslog2
 -------
-
-[![](https://badge.imagelayers.io/janeczku/remote_syslog2:latest.svg)](https://imagelayers.io/?images=janeczku/remote_syslog2:latest 'Get your own badge on imagelayers.io')
-[![Docker Pulls](https://img.shields.io/docker/pulls/janeczku/remote_syslog2.svg?style=flat-square)](https://hub.docker.com/r/janeczku/remote_syslog2/)
 
 ### Benefits
 
@@ -17,16 +15,6 @@ It automates the collection and sending of logs to central log collectors or clo
 ### Usage examples
 
 Configuration parameters can be passed both using environment variables and command line flags
-
-#### Forward all logs from your Docker host to Loggly
-
-    docker run -d -v /var/logs:/host/logs janeczku/remote_syslog2 \
-    -d logs-01.loggly.com -p 514 /host/logs/*.log
-
-#### Forward logs from a Nginx container to Papertrail over TCP with TLS
-
-    docker run -d --volumes-from nginx janeczku/remote_syslog2 \
-    -d logs.papertrailapp.com -p 54545 --tls=true /var/log/nginx/nginx-access.log
 
 ### Compatible log management servers/services (non-exclusive list)
 
